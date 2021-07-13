@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.schema';
+import { User } from './modules/user/entities/user.schema';
 import { ConfigModule } from '@nestjs/config';
 import TypeOrmConfig from './typeorm.config';
+import UserModule from './modules/user/user.module';
+import CryptoModule from './modules/crypto/crypto.module';
+import AuthModule from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -16,8 +17,11 @@ import TypeOrmConfig from './typeorm.config';
       envFilePath: '.env',
       isGlobal: true,
     }),
+    UserModule,
+    CryptoModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, TypeOrmConfig],
+  controllers: [],
+  providers: [TypeOrmConfig],
 })
 export class AppModule {}

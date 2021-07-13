@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-import { User } from './user.schema';
+import { User } from './modules/user/entities/user.schema';
 
 type DatabaseOptions = Promise<TypeOrmModuleOptions> | TypeOrmModuleOptions;
 @Injectable()
